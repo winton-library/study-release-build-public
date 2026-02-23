@@ -1,7 +1,7 @@
 {
   "$schema": "https://wails.io/schemas/config.v2.json",
-  "name": "study-release-build-public",
-  "outputfilename": "study-release-build-public",
+  "name": "game-of-life",
+  "outputfilename": "game-of-life",
   "frontend:install": "bun install",
   "frontend:build": "bun run build",
   "frontend:dev:watcher": "bun run dev",
