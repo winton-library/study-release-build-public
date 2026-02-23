@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/winton-library/study-release-build-public/compare/game-of-life-v0.1.0...game-of-life-v0.2.0) (2026-02-23)
+
+
+### Features
+
+* **game-of-life:** test release workflow ([59b9582](https://github.com/winton-library/study-release-build-public/commit/59b95829468d178c4e4f0fde445141156c13cbe7))
+
 ## [0.1.0](https://github.com/winton-library/study-release-build-public/compare/game-of-life-v0.0.1...game-of-life-v0.1.0) (2026-02-23)
 
 
