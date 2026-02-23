@@ -1,7 +1,9 @@
 name: Release
 
 on:
-  workflow_dispatch: {}
+  push:
+    tags:
+      - "game-of-life-v*"
 
 env:
   GO_VERSION: "1.25.5"
@@ -96,11 +98,10 @@ jobs:
           path: artifacts
           merge-multiple: true
 
-      - name: Create release
+      - name: Attach binaries to release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v0.0.0-test
-          name: "Test Release"
+          tag_name: ${{ github.ref_name }}
           files: |
             artifacts/${{ env.APP_NAME }}-darwin-arm64.dmg
             artifacts/${{ env.APP_NAME }}-windows-amd64.zip

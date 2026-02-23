@@ -97,7 +97,17 @@ function App() {
   }, []);
 
   useEffect(() => {
-    GetState().then(updateState);
+    // In production builds, the frontend can load before the canvas ref is ready.
+    // Retry until the canvas is drawn.
+    const init = () => {
+      GetState().then((s) => {
+        updateState(s);
+        if (!canvasRef.current?.width) {
+          setTimeout(init, 50);
+        }
+      });
+    };
+    init();
   }, [updateState]);
 
   useEffect(() => {

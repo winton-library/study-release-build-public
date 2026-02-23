@@ -1,0 +1,11 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "packages": {
+    "apps/game-of-life": {
+      "release-type": "go",
+      "package-name": "game-of-life",
+      "changelog-path": "CHANGELOG.md",
+      "separate-pull-requests": true
+    }
+  }
+}
