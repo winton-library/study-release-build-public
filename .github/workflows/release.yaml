@@ -36,6 +36,10 @@ jobs:
         working-directory: ${{ env.APP_DIR }}
         run: wails build -platform darwin/arm64 -clean
 
+      - name: Ad-hoc sign binary
+        working-directory: ${{ env.APP_DIR }}/build/bin
+        run: codesign -s - --force --deep ${{ env.APP_NAME }}.app
+
       - name: Package binary
         working-directory: ${{ env.APP_DIR }}/build/bin
         run: tar -czf ${{ env.APP_NAME }}-darwin-arm64.tar.gz ${{ env.APP_NAME }}.app
