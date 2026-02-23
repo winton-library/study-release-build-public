@@ -40,14 +40,14 @@ jobs:
         working-directory: ${{ env.APP_DIR }}/build/bin
         run: codesign -s - --force --deep ${{ env.APP_NAME }}.app
 
-      - name: Package binary
+      - name: Package as DMG
         working-directory: ${{ env.APP_DIR }}/build/bin
-        run: tar -czf ${{ env.APP_NAME }}-darwin-arm64.tar.gz ${{ env.APP_NAME }}.app
+        run: hdiutil create -volname "${{ env.APP_NAME }}" -srcfolder ${{ env.APP_NAME }}.app -ov -format UDZO ${{ env.APP_NAME }}-darwin-arm64.dmg
 
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ env.APP_NAME }}-darwin-arm64
-          path: ${{ env.APP_DIR }}/build/bin/${{ env.APP_NAME }}-darwin-arm64.tar.gz
+          path: ${{ env.APP_DIR }}/build/bin/${{ env.APP_NAME }}-darwin-arm64.dmg
 
   build-windows:
     name: Build Windows
@@ -102,5 +102,5 @@ jobs:
           tag_name: v0.0.0-test
           name: "Test Release"
           files: |
-            artifacts/${{ env.APP_NAME }}-darwin-arm64.tar.gz
+            artifacts/${{ env.APP_NAME }}-darwin-arm64.dmg
             artifacts/${{ env.APP_NAME }}-windows-amd64.zip
